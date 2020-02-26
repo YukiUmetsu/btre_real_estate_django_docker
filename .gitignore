@@ -16,3 +16,6 @@ media
 /btre_project/.idea/
 .DS_STORE
 /btre_project/static
+Pipfile
+Pipfile.lock
+django.iml
