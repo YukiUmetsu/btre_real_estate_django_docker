@@ -14,6 +14,9 @@ services:
       - db
   db:
     image: postgres:12.0-alpine
+    # this ports config is for pgadmin
+    ports:
+    - 5432:5432
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
