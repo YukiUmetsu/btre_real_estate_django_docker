@@ -16,5 +16,7 @@ RUN pip install --upgrade pip
 COPY ./requirements.txt /usr/src/btre/requirements.txt
 RUN pip install -r requirements.txt
 
+EXPOSE 587
+
 # copy project
 COPY . /usr/src/btre/
