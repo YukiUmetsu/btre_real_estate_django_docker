@@ -19,3 +19,4 @@ media
 Pipfile
 Pipfile.lock
 django.iml
+/btre_project/btre/static/.env.prod
