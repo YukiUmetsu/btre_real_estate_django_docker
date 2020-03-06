@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   web:
-    build: yukiumetsudock/btre_django_web
+    image: yukiumetsudock/btre_django_web
     command: gunicorn django.wsgi:application --bind 0.0.0.0:8000
     volumes:
       - ./btre_project/:/usr/src/btre/
@@ -14,7 +14,7 @@ services:
       - db
 
   nginx:
-    build: yukiumetsudock/btre_nginx
+    image: yukiumetsudock/btre_nginx
     ports:
       - 1337:80
     volumes:
