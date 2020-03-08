@@ -3,15 +3,25 @@ version: '3.7'
 services:
   web:
     build: ./btre_project
-    command: python manage.py runserver 0.0.0.0:8000
+    command: sh -c "python manage.py migrate && gunicorn btre.wsgi:application --bind 0.0.0.0:8000"
     volumes:
       - ./btre_project/:/usr/src/btre/
     ports:
       - 8000:8000
     env_file:
-      - btre_project/btre/.env.dev
+      - btre_project/btre/.env.prod
     depends_on:
       - db
+
+  nginx:
+    build: ./nginx
+    ports:
+      - 1337:80
+    volumes:
+      - ./btre_project/:/usr/src/btre/
+    depends_on:
+      - web
+
   db:
     image: postgres:12.0-alpine
     # this ports config is for pgadmin
@@ -20,7 +30,8 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
-      - btre_project/btre/.env.dev
+      - btre_project/btre/.env.prod
 
 volumes:
   postgres_data:
+  btre:
