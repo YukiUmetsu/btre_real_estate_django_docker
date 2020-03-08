@@ -3,7 +3,7 @@ version: '3.7'
 services:
   web:
     image: yukiumetsudock/btre_django_web
-    command: sh -c "python manage.py migrate && python manage.py collectstatic && gunicorn btre.wsgi:application --bind 0.0.0.0:8000"
+    command: sh -c "python manage.py migrate && gunicorn btre.wsgi:application --reload --bind 0.0.0.0:8000"
     volumes:
       - ./btre_project/:/usr/src/btre/
     ports:
