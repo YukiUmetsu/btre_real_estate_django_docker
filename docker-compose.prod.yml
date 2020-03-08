@@ -16,7 +16,7 @@ services:
   nginx:
     image: yukiumetsudock/btre_nginx
     ports:
-      - 1337:80
+      - 80:80
     volumes:
       - ./btre_project/:/usr/src/btre/
     depends_on:
